@@ -10,6 +10,13 @@
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
     </ul>
+    <h3>Local Links</h3>
+    <ul>
+      <li><a href="/#/signup">Signup</a></li>
+      <li><a href="/#/login">Login</a></li>
+      <li><a href="/#/logout">Logout</a></li>
+      <li><a href="/#/articles/new">New Article</a></li>
+    </ul>
     <h3>Essential Links</h3>
     <ul>
       <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
