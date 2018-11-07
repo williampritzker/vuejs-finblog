@@ -17,15 +17,15 @@
               </div>
             </div>
 
-<!--             <div class="col-md-12">
-              <div class="form-group">
-                <textarea v-model="newArticle.user_id" name="" class="form-control" id="" cols="30" rows="7" placeholder="Bio"></textarea>
+            <div class="form-group">
+              <div v-for="tag in tags">
+                <label  class="checkbox-inline"><input v-model="newArticle.tags" type="checkbox" v-bind:value="tag.id">{{ tag.name }}</label>
               </div>
-            </div> -->
-
-            <div class="col-md-12">
-              <div class="form-group">
-                <textarea v-model="newArticle.tags" name="" class="form-control" id="" cols="30" rows="7" placeholder="Tags"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <div v-for="subpage in subpages">
+                <label ><input v-model="newArticle.subpage_id" type="radio" name="optradio" v-bind:value="subpage.id">{{subpage.title}}</label>
               </div>
             </div>
 
@@ -49,7 +49,7 @@ export default {
     return {
       subpages: {},
       tags: {},
-      newArticle: {title: "", text: "", user_id: "", subpage_id: "", tags: []}
+      newArticle: {title: "", text: "", tags: [], subpage_id: ""}
     };
   },
   created: function() {
@@ -67,16 +67,15 @@ export default {
       var formData = new FormData();
       formData.append("title", this.newArticle.title);
       formData.append("text", this.newArticle.text);
-      formData.append("user_id", this.newArticle.user_id);
       formData.append("tags", this.newArticle.tags);
+      formData.append("subpage_id", this.newArticle.subpage_id);
 
       axios.post("http://localhost:3000/api/articles", formData).then(response => {
         this.articles.push(response.data);
         this.newArticle.title = "";
         this.newArticle.text = "";
-        this.newArticle.user_id = "";
-        this.newArticle.user_id = "";
         this.newArticle.tags = [];
+        this.newArticle.subpage_id = "";
       });
     }
   },

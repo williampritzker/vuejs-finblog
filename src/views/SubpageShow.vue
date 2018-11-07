@@ -10,7 +10,8 @@
         <a v-bind:href="'/#/articles/' + article.id">{{article.title }} </a>   
       </div>
     </ul>
-    <router-link to="/">Back to Home</router-link>
+    <div><a v-bind:href="'/#/pages/' + subpage.page_id">{{subpage.page.title }}</a></div>
+    <div><router-link to="/">Back to Home</router-link></div>
   </div>
 </template>
 
