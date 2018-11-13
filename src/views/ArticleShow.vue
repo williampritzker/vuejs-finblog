@@ -8,6 +8,9 @@
       <div>
         <a v-bind:href="'/#/subpages/' + article.subpage_id">{{article.subpage.title }}</a>
       </div>
+      <div>
+        <a v-if="article.user.id == user.id" v-on:click="deleteArticle">Delete Article</a>
+      </div>
       <router-link to="/">Back to Home</router-link>
     </div>
   </div>
@@ -18,7 +21,8 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      article: {}
+      article: {},
+      user:{}
     };
   },
   created: function() {
@@ -26,8 +30,22 @@ export default {
     .then(response => {
       this.article = response.data;
     });
+    axios.get("http://localhost:3000/api/users/me")
+    .then(response => {
+      this.user = response.data;
+    });
   },
-  methods: {},
+  methods: {
+    deleteArticle: function() {
+    axios.delete("http://localhost:3000/api/articles/" + this.$route.params.id)
+    .then(response => {
+      this.$router.push("/users/me");
+    })
+    .catch(error => {
+      this.errors = error.response.data.errors;
+    });
+  }
+  },
   computed: {}
 };
 </script>

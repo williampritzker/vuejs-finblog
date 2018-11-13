@@ -49,7 +49,8 @@ export default {
     return {
       subpages: {},
       tags: {},
-      newArticle: {title: "", text: "", tags: [], subpage_id: ""}
+      newArticle: {title: "", text: "", tags: [], subpage_id: ""},
+      errors: []
     };
   },
   created: function() {
@@ -70,13 +71,13 @@ export default {
       formData.append("tags", this.newArticle.tags);
       formData.append("subpage_id", this.newArticle.subpage_id);
 
-      axios.post("http://localhost:3000/api/articles", formData).then(response => {
-        this.articles.push(response.data);
-        this.newArticle.title = "";
-        this.newArticle.text = "";
-        this.newArticle.tags = [];
-        this.newArticle.subpage_id = "";
-      });
+      axios
+        .post("http://localhost:3000/api/articles", formData).then(response => {
+        this.$router.push("/articles/" + this.$route.params.id);
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     }
   },
   computed: {}

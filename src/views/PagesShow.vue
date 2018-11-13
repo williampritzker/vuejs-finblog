@@ -8,6 +8,7 @@
         <a v-bind:href="'/#/subpages/' + subpage.id">{{subpage.title }}</a>   
       </div>
     </ul>
+    
     <router-link to="/">Back to Home</router-link>
     
   </div>

@@ -7,9 +7,11 @@ import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
 import ArticleShow from "./views/ArticleShow.vue";
 import ArticleNew from "./views/ArticleNew.vue";
+import ArticleEdit from "./views/ArticleEdit.vue";
 import SubpageShow from "./views/SubpageShow.vue";
 import PageShow from "./views/PagesShow.vue";
-import UserShow from "./views/UserShow.vue"
+import UserShow from "./views/UserShow.vue";
+import UserEdit from "./views/UserEdit.vue";
 
 Vue.use(Router);
 
@@ -21,9 +23,11 @@ export default new Router({
     { path: "/login", name: "login", component: Login },
     { path: "/logout", name: "logout", component: Logout },
     { path: "/articles/new", name: "articles-new", component: ArticleNew },
+    { path: "/articles/edit/:id", name: "article-edit", component: ArticleEdit },
     { path: "/articles/:id", name: "articles-show", component: ArticleShow },
     { path: "/subpages/:id", name: "subpages-show", component: SubpageShow },
     { path: "/pages/:id", name: "pages-show", component: PageShow },
-    { path: "/users/:id", name: "users-show", component: UserShow }
+    { path: "/users/me", name: "users-show", component: UserShow },
+    { path: "/users/edit/me", name: "users-edit", component: UserEdit }
   ]
 });
