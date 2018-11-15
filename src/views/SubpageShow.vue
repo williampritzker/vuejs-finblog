@@ -1,7 +1,6 @@
 <template>
   <div class="subpage-show">
         
-
   <title>{{subpage.title }}</title>
 
   <h1>Article Title</h1>
