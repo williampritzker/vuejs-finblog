@@ -1,20 +1,11 @@
 <template>
   <div class="hello">
-    <h3>Local Links</h3>
-    <ul>
-      <li><a v-if="user.id == null" href="/#/signup">Signup</a></li>
-      <li><a v-if="user.id == null" href="/#/login">Login</a></li>
-      <li><a v-if="user.id != null" href="/#/logout">Logout</a></li>
-      <li><a v-if="user.id != null" href="/#/articles/new">New Article</a></li>
-      <li><a v-if="user.id != null" href="/#/users/me">Profile</a></li>
-    </ul>
+    
+    <p><a v-if="user.id == null" > Welcome to FinBlog—a place for sharing information about finance. Please login or create an account.
 
-    <h3>Pages</h3>
-      <div v-for="page in pages">
-        <div>
-          <li><a v-bind:href="'/#/pages/' + page.id">{{ page.title }}</a></li>
-        </div>
-    </div>
+    You may view our pages from the menu bar.</a></p>
+
+    <p><a v-if="user.id =! null" > Write some articles!!! This is a an opensource space, I don't create no content</a></p>
 
   </div>
 

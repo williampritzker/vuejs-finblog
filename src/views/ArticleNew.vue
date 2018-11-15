@@ -1,5 +1,39 @@
 <template>
+  
   <div class="articles-new">
+    <h4 class="comment-reply-title title">Post an Article</h4>
+
+    <form class="comment-form">
+      <div class="col-md-12">
+              <div class="form-group">
+                <input v-model="newArticle.title" class="form-control" placeholder="Title" type="text">
+              </div>
+      </div>
+      <div class="form-group">
+        <textarea v-model="newArticle.text" name="" class="form-control" id="" cols="30" rows="15" placeholder="text"></textarea>
+      </div>
+      <div class="form-group">
+              <div v-for="tag in tags">
+                <label  class="checkbox-inline"><input v-model="newArticle.tags" type="checkbox" v-bind:value="tag.id">{{ tag.name }}</label>
+              </div>
+      </div>
+      <div class="form-group">
+        <div v-for="subpage in subpages">
+          <label ><input v-model="newArticle.subpage_id" type="radio" name="optradio" v-bind:value="subpage.id">{{subpage.title}}</label>
+        </div>
+      </div>
+      <p class="form-group btn-form-group">
+        <button v-on:click="addArticle()" class="btn btn-default submit">Post Article</button>
+      </p>
+    </form>
+  </div><!-- .comment-respond -->
+
+
+
+
+
+
+<!--   <div class="articles-new">
     <div class="container">
 
       <div class="row">
@@ -39,7 +73,8 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
+
 </template>
 
 <script>
