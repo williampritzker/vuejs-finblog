@@ -1,9 +1,6 @@
 <template>
   <div class="article-edit">
-    <div class="container">
 
-      <div class="row">
-        <div class="col-md-8 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -35,10 +32,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-    </div>
+        
   </div>
 </template>
 

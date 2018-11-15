@@ -25,6 +25,11 @@
             </ul>          
           </div><!-- .post-content -->
 
+          <div><a v-if="user.id == article.user.id"v-bind:href="'/#/articles/edit/' + article.id">Edit Article</a></div>
+          <div><a v-if="user.id == article.user.id"><button v-on:click="deleteArticle()" class="btn btn-default submit">Delete Article</button></a></div>
+
+          <!-- v-if="user.id != null" -->
+
         </article><!-- .post -->
         
       </div>
