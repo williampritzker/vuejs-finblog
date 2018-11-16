@@ -37,11 +37,11 @@
                         </ul>
                       </div>
                     </li>
-                    <li class="menu-item"><a v-if="user.id == null" href="/#/signup">Signup</a></li>
-                    <li class="menu-item"><a v-if="user.id == null" href="/#/login">Login</a></li>
-                    <li class="menu-item"><a v-if="user.id != null" href="/#/logout">Logout</a></li>
-                    <li class="menu-item"><a v-if="user.id != null" href="/#/articles/new">New Article</a></li>
-                    <li class="menu-item"><a v-if="user.id != null" href="/#/users/me">Profile</a></li>
+                      <li v-if="isLoggedIn()" class="menu-item"><a href="/#/articles/new">New Article</a></li>
+                      <li v-if="isLoggedIn()"class="menu-item"><a href="/#/users/me">Profile</a></li>
+                      <li v-if="isLoggedIn()" class="menu-item"><a href="/#/logout">Logout</a></li>
+                      <li v-if="!isLoggedIn()" class="menu-item"><a href="/#/signup">Signup</a></li>
+                      <li v-if="!isLoggedIn()" class="menu-item"><a href="/#/login">Login</a></li>
                   </ul>
                 </nav><!-- .menu-list-wrap -->
               </div><!-- .main-menu -->
@@ -166,14 +166,18 @@ export default {
   },
   created: function() {
     axios.get("http://localhost:3000/api/pages/")
-    .then(response => {
-      console.log(response.data);
-      this.pages = response.data;
-    }),
-    axios.get("http://localhost:3000/api/users/me")
       .then(response => {
-      this.user = response.data;
-    });
+        console.log(response.data);
+        this.pages = response.data;
+      });
+  },
+  methods: {
+    isLoggedIn: function() {
+      if (localStorage.getItem("jwt")) {
+        return true;
+      }
+      return false;
+    }
   }
-}
+};
 </script>

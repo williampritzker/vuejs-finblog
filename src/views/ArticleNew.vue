@@ -2,8 +2,6 @@
   
   <div class="articles-new">
     <h4 class="comment-reply-title title">Post an Article</h4>
-
-    <form class="comment-form">
       <div class="col-md-12">
               <div class="form-group">
                 <input v-model="newArticle.title" class="form-control" placeholder="Title" type="text">
@@ -19,13 +17,12 @@
       </div>
       <div class="form-group">
         <div v-for="subpage in subpages">
-          <label ><input v-model="newArticle.subpage_id" type="radio" name="optradio" v-bind:value="subpage.id">{{subpage.title}}</label>
+          <label ><input v-model="newArticle.subpage_id" type="radio" v-bind:value="subpage.id">{{subpage.title}}</label>
         </div>
       </div>
       <p class="form-group btn-form-group">
-        <button v-on:click="addArticle()" class="btn btn-default submit">Post Article</button>
+        <button v-on:click="addArticle()" class="btn btn-default">Post Article</button>
       </p>
-    </form>
   </div><!-- .comment-respond -->
 
 
@@ -90,13 +87,13 @@ export default {
   },
   created: function() {
     axios.get("http://localhost:3000/api/tags")
-    .then(response => {
-      this.tags = response.data;
-    });
+      .then(response => {
+        this.tags = response.data;
+      });
     axios.get("http://localhost:3000/api/subpages")
-    .then(response => {
-      this.subpages = response.data;
-    });
+      .then(response => {
+        this.subpages = response.data;
+      });
   },
   methods: {
     addArticle: function() {
@@ -108,7 +105,8 @@ export default {
 
       axios
         .post("http://localhost:3000/api/articles", formData).then(response => {
-        this.$router.push("/articles/" + this.$route.params.id);
+          console.log(response.data);
+          this.$router.push("/articles/" + response.data.id);
         })
         .catch(error => {
           this.errors = error.response.data.errors;
